@@ -1,14 +1,4 @@
-# tsnl2: Inductive KG pipeline (CSR-backed)
-
-This repo implements the inductive knowledge-graph system from the ILPC-style design doc using the exact forward CSR format produced by `gencsr.cpp`. Everything is C++20 with mmap-based IO; no Python dependencies.
-
-## gencsr.cpp format (authoritative)
-- `offsets.bin`: `uint32_t offsets[N+2]`, `offsets[v]` is the start of node `v`’s out-adjacency (1-based IDs, `offsets[0]=0`, `offsets[N+1]=M`).
-- `csr.bin`: `uint32_t csr[M]`, out-neighbor node IDs.
-- `rels.bin`: `uint16_t rels[M]`, relation IDs aligned with `csr`.
-- `entities.bin`: `uint32_t entities[N]`, internal node `i` (1-based) maps to Wikidata Q-ID number `entities[i-1]`.
-- `props.bin`: `uint16_t props[R]`, internal relation `r` (1-based) maps to P-ID number `props[r-1]`.
-All loaders consume these files as-is; no reformatting occurs.
+# tsnl
 
 ## Building
 ```
